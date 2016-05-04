@@ -19,7 +19,7 @@ libraryDependencies ++= Seq(
   specs2 % Test,
   specs2 % IntegrationTest,
   "com.h2database" % "h2" % "1.4.191",
-  "org.flywaydb" %% "flyway-play" % "2.2.1",
+  "org.flywaydb" %% "flyway-play" % "3.0.0",
   "com.typesafe.play" %% "play-slick" % "1.1.1",
   "com.softwaremill.macwire" %% "macros" % "2.2.1",
   "com.mohiva" %% "play-silhouette" % "3.0.2",

@@ -5,6 +5,7 @@ import _root_.controllers.WebJarAssets
 
 import com.softwaremill.macwire._
 
+import org.flywaydb.play.FlywayPlayComponents
 import play.api._
 import play.api.ApplicationLoader.Context
 import play.api.cache.EhCacheComponents
@@ -31,12 +32,13 @@ class SilhouetteMacwireComponents(context: Context) extends BuiltInComponentsFro
     with ControllerModule with UtilModule with UserModule with SilhouetteModule
     with DAOModule with DatabaseModule
     with I18nComponents with NingWSComponents with CSRFComponents with SecurityHeadersComponents
-    with SlickComponents with EhCacheComponents with OpenIDComponents {
+    with SlickComponents with EhCacheComponents with OpenIDComponents with FlywayPlayComponents {
+  flywayPlayInitializer
+
   // for the optional Router param in error handler
   // if this is trying to use the Router value from BuiltInComponentsFromContext
   // it results in a circular dependency between the Router and the HttpErrorHandler
   // the application obviously won't start if this happens
-
   lazy val routerOption = None
   override lazy val httpErrorHandler = errorHandler
   override lazy val httpFilters: Seq[EssentialFilter] = filters.filters
